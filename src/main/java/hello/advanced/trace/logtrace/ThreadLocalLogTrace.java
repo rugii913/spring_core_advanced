@@ -65,6 +65,10 @@ public class ThreadLocalLogTrace implements LogTrace {
         TraceId traceId = traceIdHolder.get();
         if (traceId.isFirstLevel()) {
             traceIdHolder.remove(); //destroy
+            // ***** ThreadLocal 사용 시 주의사항 *****
+            //톰캣 WAS처럼 쓰레드 풀을 사용하는 경우, 쓰레드를 제거하지 않고 재사용하므로, 쓰레드가 연결된 데이터도 메모리에 그대로 남아있음
+            //사용자의 요청이 끝나는 과정에서 TreadLocal.remove()를 넣어주거나
+            //요청 처리 끝나고 필터나 인터셉터에서 데이터를 제거해줘야 한다.
         } else {
             traceIdHolder.set(traceId.createPreviousId());
         }
