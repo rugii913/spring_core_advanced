@@ -27,7 +27,7 @@ public class TraceId {
     }
 
     public TraceId createPreviousId() { //public으로 함 - 외부에서 쓸 것
-        return new TraceId(id, level + 1);
+        return new TraceId(id, level - 1);
     }
 
     public boolean isFirstLevel() {
