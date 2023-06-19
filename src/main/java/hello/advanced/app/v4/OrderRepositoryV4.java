@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public class OrderRepositoryV4 {
 
     private final LogTrace trace;
-    
+
     public void save(String itemId) {
 
         AbstractTemplate<Void> template = new AbstractTemplate<>(trace) {
