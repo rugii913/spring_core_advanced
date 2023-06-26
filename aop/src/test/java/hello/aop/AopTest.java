@@ -2,10 +2,7 @@ package hello.aop;
 
 import hello.aop.order.OrderRepository;
 import hello.aop.order.OrderService;
-import hello.aop.order.aop.AspectV1;
-import hello.aop.order.aop.AspectV2;
-import hello.aop.order.aop.AspectV3;
-import hello.aop.order.aop.AspectV4Pointcut;
+import hello.aop.order.aop.*;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,7 +16,8 @@ import org.springframework.context.annotation.Import;
 //빈 바꾸면서 등록할 때 편하게 쓸 수 있음
 //@Import(AspectV2.class)
 //@Import(AspectV3.class)
-@Import(AspectV4Pointcut.class)
+//@Import(AspectV4Pointcut.class)
+@Import({AspectV5Order.LogAspect.class, AspectV5Order.TxAspect.class})
 @SpringBootTest
 public class AopTest {
 
