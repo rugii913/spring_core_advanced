@@ -14,7 +14,8 @@ import org.springframework.context.annotation.Import;
 @SpringBootTest(properties = {"spring.aop.proxy-target-class=false"}) //JDK 동적 프록시
 //-> 아예 MemberServiceImpl memberServiceImpl; 주입 단계에서 오류 발생함
  */
-@SpringBootTest(properties = {"spring.aop.proxy-target-class=true"}) //CGLIB 프록시, 성공
+//@SpringBootTest(properties = {"spring.aop.proxy-target-class=true"}) //CGLIB 프록시, 성공
+@SpringBootTest
 @Import(ProxyDIAspect.class)
 public class ProxyDITest {
 
